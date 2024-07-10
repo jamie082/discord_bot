@@ -1,8 +1,10 @@
 import discord
 from discord.ext import commands
-TOKEN = "MY TOKEN"
+TOKEN = "MTI2MDQzODcxMTM4NTE5ODY3Mg.GV5Vj7.EEA2ob3e53HP_els61wzOrLK25gpzHX4DmIc7k"
 
-bot = commands.Bot(command_prefix="!")
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix='$', intents=intents)
 
 @bot.event
 async def on_ready():
