@@ -4,7 +4,7 @@ TOKEN = "MTI2MDQzODcxMTM4NTE5ODY3Mg.GV5Vj7.EEA2ob3e53HP_els61wzOrLK25gpzHX4DmIc7
 
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(command_prefix='$', intents=intents)
+bot = commands.Bot(command_prefix="!", intents=discord.Intents.default())
 
 @bot.event
 async def on_ready():
@@ -14,11 +14,29 @@ async def on_ready():
 async def on_message(message):
     if message.author == bot.user:
         return
+    if 'is the market getting better' in message.content.lower():
+        await message.channel.send("Has the tech market improved yet in California? Any more layoffs?")
+
+    if 'did they cut interest rates yet' in message.content.lower():
+        await message.channel.send("Has the federal reserve cut Interest Rates yet?")  
     
     if message.content == 'hello':
         await message.channel.send(f'Hi {message.author}')
     if message.content == 'bye':
         await message.channel.send(f'Goodbye {message.author}')
+
+    hello_jamie_quotes = [
+        'Hello jamie what is going on today.',
+        'What\'s up?',
+        (
+            'Cool. Cool cool cool cool cool cool cool, '
+            'no doubt no doubt no doubt no doubt.'
+        ),
+    ]
+
+    if message.content == 'jamie!':
+        response = random.choise(hello_jamie_quotes)
+        await message.channel.send(response)
 
     await bot.process_commands(message)
 
